@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice Data : Les Jeux Olympiques</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; max-width: 900px; margin: auto; padding: 20px; background-color: #f4f4f4; }
+        .container { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1 { color: #2c3e50; text-align: center; }
+        h2 { border-bottom: 2px solid #3498db; padding-bottom: 10px; margin-top: 40px; }
+        iframe { border: 1px solid #ddd; border-radius: 4px; }
+        img { max-width: 100%; height: auto; display: block; margin: 20px 0; border: 1px solid #ddd; }
+        .info { background: #e8f4fd; padding: 15px; border-radius: 4px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Visualisation de données : Les Jeux Olympiques</h1>
+
+        <h2>1. Carte interactive (via Wikidata)</h2>
+        <p>Cette carte affiche les villes hôtes. Elle utilise des données <strong>spatiales</strong> (coordonnées) et <strong>visuelles</strong> (images).</p>
+        <iframe width="100%" height="450" src="https://query.wikidata.org/embed.html#SELECT%20%3FcityLabel%20%3Fcoords%20%3Fdate%20%3Fparticipants%20%3Fimage%20%3FcountryLabel%20WHERE%20%7B%0A%20%20%3Fevent%20wdt%3AP31%2Fwdt%3AP279*%20wd%3AQ5389%3B%20%23%20%C3%89v%C3%A9nement%20de%20type%20JO%0A%20%20%20%20%20%20%20%20%20wdt%3AP276%20%3Fcity%3B%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20Dans%20une%20ville%0A%20%20%20%20%20%20%20%20%20wdt%3AP585%20%3Fdate.%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20DATE%20OBLIGATOIRE%0A%20%20%0A%20%20%3Fcity%20wdt%3AP625%20%3Fcoords.%20%20%20%20%20%20%20%20%20%20%20%20%23%20COORDONN%C3%89ES%20OBLIGATOIRES%0A%20%20%0A%20%20OPTIONAL%20%7B%20%3Fevent%20wdt%3AP1132%20%3Fparticipants.%20%7D%20%0A%20%20OPTIONAL%20%7B%20%3Fcity%20wdt%3AP18%20%3Fimage.%20%7D%20%20%20%20%20%20%20%20%20%20%20%0A%20%20OPTIONAL%20%7B%20%3Fcity%20wdt%3AP17%20%3Fcountry.%20%7D%20%20%20%20%20%20%20%20%0A%20%20%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cfr%2Cen%22.%20%7D%0A%7D%0AORDER%20BY%20DESC(%3Fdate)%0ALIMIT%20100" referrerpolicy="origin" sandbox="allow-scripts allow-same-origin allow-popups""></iframe>
+
+        <h2>2. Analyse temporelle et quantitative (via RAWGraphs)</h2>
+        <p>Ce graphique compare l'année de l'événement avec le nombre de participants (données <strong>temporelles</strong> et <strong>quantitatives</strong>).</p>
+        <img src="graphique.png" alt="Graphique RAWGraphs des JO">
+
+        <div class="info">
+            <p><strong>Types de données présentes :</strong></p>
+            <ul>
+                <li><strong>Temporelles :</strong> Années des éditions des JO.</li>
+                <li><strong>Quantitatives :</strong> Nombre de participants par édition.</li>
+                <li><strong>Spatiales :</strong> Localisation géographique des villes (P625).</li>
+                <li><strong>Catégorielles :</strong> Pays organisateurs (P17).</li>
+                <li><strong>Visuelles :</strong> Photos des villes (P18).</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
